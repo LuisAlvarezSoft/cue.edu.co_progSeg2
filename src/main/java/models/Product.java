@@ -13,11 +13,11 @@ import java.time.LocalDateTime;
 
 
 public class Product {
-    private String id;
+    private String idproduct;
     private String name;
     private double price;
     private LocalDateTime registrationDate;
 
-    public void setId(long id) {
-    }
+    public void setIdproduct(long idproduct) {
+    }   
 }

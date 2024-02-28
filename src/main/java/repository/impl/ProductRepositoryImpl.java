@@ -16,15 +16,17 @@ public class ProductRepositoryImpl implements Repository<Product>{
     }
     private Product createProduct(ResultSet resultSet) throws SQLException {
         Product product = new Product();
-        product.setId(resultSet.getLong("idproduct"));
+        product.setIdproduct(resultSet.getLong("idproduct"));
         product.setName(resultSet.getString("name"));
         product.setPrice(resultSet.getDouble("price"));
-        product.setRegistrationDate(
-                resultSet.getObject("register_date") != null ?
-                        resultSet.getDate("register_date")
-                                .toInstant()
-                                .atZone(ZoneId.systemDefault())
-                                .toLocalDateTime() : null);
+
+        java.sql.Timestamp registerTimestamp = resultSet.getTimestamp("register_date");
+        if (registerTimestamp != null) {
+            product.setRegistrationDate(registerTimestamp.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
+        } else {
+            product.setRegistrationDate(null);
+        }
+
         return product;
     }
 

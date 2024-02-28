@@ -10,7 +10,7 @@ public class DatabaseConnection {
     private static String password = "";
     private static Connection connection;
     public static Connection getInstance() throws SQLException{
-        if(connection==null || connection.isClosed()){
+        if(connection==null || connection.isClosed()    ){
             connection = DriverManager.getConnection(url,user,password);
         }
         return connection;

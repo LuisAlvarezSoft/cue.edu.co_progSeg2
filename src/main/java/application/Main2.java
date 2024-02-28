@@ -12,9 +12,9 @@ public class Main2 {
         try (Connection conn = DatabaseConnection.getInstance()) {
             Repository<Product> repository = new ProductRepositoryImpl();
             System.out.println("*** List products from database");
-            repository.list().stream().forEach(System.out::println);
-            System.out.println("*** Get by Id: 1");
-            System.out.println(repository.byId(1L).toString());
+            repository.list().forEach(System.out::println);
+            System.out.println("*** Get by Id: 3");
+            System.out.println(repository.byId(3L).toString());
         } catch (SQLException e) {
             e.printStackTrace();
         }
